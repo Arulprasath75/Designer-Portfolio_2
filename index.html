@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="N. Arulprasath is a packaging and graphic designer focused on modern, premium brand experiences and creative product design."
+    />
+    <title>N. Arulprasath | Packaging Design Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f1ea;
+        --bg-soft: #fbf8f4;
+        --card: rgba(255, 255, 255, 0.7);
+        --card-strong: #ffffff;
+        --line: rgba(25, 29, 32, 0.08);
+        --primary: #1d3c34;
+        --primary-dark: #102722;
+        --accent: #b88d58;
+        --accent-soft: #f1e4cf;
+        --text: #1c2323;
+        --muted: #55615f;
+        --shadow: 0 25px 55px rgba(32, 40, 38, 0.12);
+        --shadow-lg: 0 40px 80px rgba(32, 40, 38, 0.18);
+        --radius-lg: 28px;
+        --radius-md: 20px;
+        --radius-sm: 12px;
+        --container: 1280px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        background: radial-gradient(circle at top left, rgba(184,141,88,0.18), transparent 28%), linear-gradient(180deg, #f9f5f1 0%, #f2ede7 100%);
+        color: var(--text);
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(16px);
+        background: rgba(249,245,241,.68);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .nav-links a {
+        position: relative;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 2px;
+        background: var(--primary);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      .nav-links a:hover, .nav-links a:focus-visible { color: var(--primary); }
+      .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+
+      .nav-toggle {
+        display: none;
+        border: 1px solid var(--line);
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.7);
+        color: var(--primary);
+        cursor: pointer;
+      }
+
+      .hero { padding: 72px 0 32px; }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 18px;
+        font-size: 0.76rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--primary);
+        font-weight: 800;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 42px;
+        height: 1.5px;
+        background: var(--primary);
+      }
+
+      h1, h2, h3 { margin: 0; color: var(--primary-dark); }
+      .hero h1 {
+        font-size: clamp(2.7rem, 4.8vw, 5rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+        max-width: 620px;
+      }
+
+      .hero-copy {
+        margin-top: 22px;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 999px;
+        border: 1px solid var(--primary);
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .btn.primary {
+        background: var(--primary);
+        color: #fff;
+        box-shadow: 0 16px 30px rgba(29,60,52,0.2);
+      }
+
+      .btn.secondary { background: transparent; color: var(--primary); }
+      .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
+
+      .stats {
+        list-style: none;
+        padding: 0;
+        margin: 42px 0 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(110px, 1fr));
+        gap: 18px;
+      }
+
+      .stats li {
+        background: rgba(255,255,255,.52);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 18px 18px 16px;
+      }
+
+      .stats strong {
+        display: block;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        color: var(--primary);
+      }
+
+      .stats span {
+        color: var(--muted);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .hero-visual { position: relative; display: flex; justify-content: center; }
+      .portrait-wrap {
+        position: relative;
+        width: min(440px, 92%);
+        aspect-ratio: 0.92;
+        border-radius: 32px;
+        background: linear-gradient(135deg, rgba(184,141,88,0.3), rgba(29,60,52,0.08));
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+
+      .portrait-wrap::before {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(184,141,88,0.2);
+        filter: blur(8px);
+        right: -24px;
+        top: -26px;
+      }
+
+      .portrait-wrap::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 2px solid rgba(29,60,52,0.12);
+        left: -20px;
+        bottom: 10%;
+      }
+
+      .portrait {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        border-radius: 26px;
+        border: 1px solid rgba(255,255,255,0.5);
+        background: #ddd;
+      }
+
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .floating-badge {
+        position: absolute;
+        right: -18px;
+        bottom: 36px;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid rgba(29,60,52,0.08);
+        border-radius: 18px;
+        padding: 16px 18px;
+        box-shadow: 0 18px 38px rgba(15,39,34,0.15);
+        backdrop-filter: blur(10px);
+      }
+
+      .floating-badge strong {
+        display: block;
+        font-size: 1.4rem;
+        color: var(--primary);
+      }
+
+      .floating-badge span {
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section { padding: 80px 0; }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 18px;
+        margin-bottom: 34px;
+      }
+
+      .section-kicker {
+        display: inline-block;
+        margin-bottom: 14px;
+        font-size: 0.74rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .section-head h2 { font-size: clamp(2.1rem, 3vw, 3rem); letter-spacing: -0.05em; }
+      .section-head p { max-width: 500px; margin: 0; color: var(--muted); }
+
+      .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: stretch; }
+      .info-panel, .contact-card, .skill-card, .category-card {
+        background: rgba(255,255,255,0.5);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 16px 32px rgba(24,30,27,0.06);
+      }
+
+      .info-panel { overflow: hidden; }
+      .info-panel img {
+        width: 100%;
+        height: 100%;
+        min-height: 380px;
+        object-fit: cover;
+      }
+
+      .about-copy { padding: 32px; }
+      .about-copy p { margin: 0 0 18px; color: var(--muted); font-size: 1.05rem; }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 18px;
+        margin-top: 26px;
+      }
+
+      .mini-item {
+        padding: 18px 16px;
+        border-radius: var(--radius-md);
+        background: rgba(241,228,207,0.55);
+        border: 1px solid rgba(184,141,88,0.26);
+      }
+
+      .mini-item strong { display: block; color: var(--primary); margin-bottom: 6px; }
+      .mini-item span { color: var(--muted); font-size: 0.9rem; }
+
+      .timeline { position: relative; display: grid; gap: 26px; }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 13px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(29,60,52,0.2), rgba(184,141,88,0.4));
+      }
+
+      .time-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        gap: 18px;
+        margin-left: 4px;
+      }
+
+      .dot {
+        position: relative;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--primary);
+        border: 4px solid #fff;
+        margin-top: 12px;
+        box-shadow: 0 0 0 1px rgba(29,60,52,0.15);
+        z-index: 1;
+      }
+
+      .time-content {
+        background: rgba(255,255,255,0.68);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px 24px;
+      }
+
+      .time-content h3 { font-size: 1.15rem; }
+      .meta {
+        margin: 10px 0 8px;
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .time-content p { margin: 0; color: var(--muted); }
+
+      .skill-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
+      .skill-card { padding: 22px 20px; }
+      .skill-card h3 { font-size: 1.08rem; margin-bottom: 18px; }
+      .skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
+      .skill-list span {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+        background: rgba(29,60,52,0.05);
+        color: var(--primary);
+        border-radius: 999px;
+        border: 1px solid rgba(29,60,52,0.08);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .portfolio-section { padding: 80px 0; }
+      .portfolio-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+        margin-top: 40px;
+      }
+
+      .category-card {
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .category-preview {
+        width: 100%;
+        height: 240px;
+        background: #ddd;
+        overflow: hidden;
+      }
+
+      .category-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .category-info { padding: 24px 20px; }
+      .category-info h3 { font-size: 1.3rem; letter-spacing: -0.03em; margin-bottom: 8px; }
+      .category-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      .image-badge {
+        display: inline-flex;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(184,141,88,0.12);
+        color: var(--accent);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+      .category-type { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+      .view-project-btn {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(29,60,52,0.08);
+        border: 1px solid rgba(29,60,52,0.12);
+        border-radius: var(--radius-md);
+        color: var(--primary);
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .view-project-btn:hover, .view-project-btn:focus-visible {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .gallery-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.92);
+        z-index: 2000;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      .gallery-modal.active { display: block; }
+      .gallery-modal-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+      .gallery-header {
+        padding: 28px 32px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .gallery-header h2 { margin: 0; font-size: 2rem; }
+      .gallery-close {
+        background: none;
+        border: none;
+        font-size: 32px;
+        cursor: pointer;
+        color: var(--text);
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s;
+      }
+      .gallery-close:hover { color: var(--primary); }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        padding: 32px;
+      }
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        aspect-ratio: 1;
+        cursor: pointer;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.2s ease;
+      }
+      .gallery-item:hover img { transform: scale(1.05); }
+
+      .image-viewer {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.95);
+        z-index: 2001;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .image-viewer.active { display: flex; }
+      .image-viewer-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+      .image-viewer img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .image-viewer-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .image-viewer-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .image-viewer-nav.prev { left: 20px; }
+      .image-viewer-nav.next { right: 20px; }
+
+      .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+      .contact-card { padding: 28px 26px; }
+      .contact-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
+      .contact-card p, .contact-card a { color: var(--muted); font-size: 1.06rem; }
+      .contact-links { display: grid; gap: 12px; margin-top: 24px; }
+      .contact-links a { display: inline-flex; align-items: center; gap: 10px; width: fit-content; font-weight: 700; }
+      .contact-links a:hover, .contact-links a:focus-visible { color: var(--primary); }
+
+      .site-footer {
+        padding: 18px 0 40px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--line);
+        margin-top: 20px;
+      }
+
+      @media (max-width:980px) {
+        .hero-inner, .about-grid, .contact-wrap, .skill-grid { grid-template-columns: 1fr; }
+        .hero { padding-top: 48px; }
+        .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+        .nav-links {
+          position: absolute;
+          top: 78px;
+          left: 16px;
+          right: 16px;
+          display: none;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 18px 20px;
+          background: rgba(255,255,255,.88);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          box-shadow: 0 18px 40px rgba(24,30,27,0.08);
+        }
+        .nav-links.open { display: flex; }
+        .portfolio-categories { grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); }
+      }
+
+      @media (max-width:640px) {
+        .stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+        .section { padding: 64px 0; }
+        .cta-row { flex-direction: column; align-items: stretch; }
+        .btn { width: 100%; }
+        .portfolio-categories { grid-template-columns: 1fr; }
+        .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); }
+        .gallery-header { padding: 20px; }
+        .gallery-header h2 { font-size: 1.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#home" class="brand">N. Arulprasath</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-inner">
+          <div>
+            <p class="eyebrow">Packaging designer</p>
+            <h1>Crafting premium packaging & brand stories.</h1>
+            <p class="hero-copy">
+              I design packaging systems, print visuals, and consumer-focused brand narratives that turn everyday products into memorable experiences.
+              My work blends creativity, detail, and practical production awareness to create designs that look beautiful and perform commercially.
+            </p>
+            <div class="cta-row">
+              <a class="btn primary" href="#portfolio">View work</a>
+              <a class="btn secondary" href="#contact">Hire me</a>
+            </div>
+
+            <ul class="stats" aria-label="Highlights">
+              <li>
+                <strong>13</strong>
+                <span>Projects</span>
+              </li>
+              <li>
+                <strong>47</strong>
+                <span>Image Assets</span>
+              </li>
+              <li>
+                <strong>100%</strong>
+                <span>Creative Focus</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Profile image">
+            <div class="portrait-wrap">
+              <div class="portrait">
+                <img src="profile-picture.jpg" alt="Portrait of N. Arulprasath" />
+              </div>
+            </div>
+            <div class="floating-badge">
+              <strong>Packaging</strong>
+              <span>Brand Design</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">About</span>
+              <h2>Design that connects product, purpose, and people.</h2>
+            </div>
+            <p>
+              I hold a BSc (Hons) in Tea Technology and Value Addition from Uva Wellassa University of Sri Lanka, combining a strong understanding of product development with a sharp eye for visual storytelling and packaging design.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="info-panel">
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80" alt="Creative workspace" />
+            </div>
+
+            <div class="about-copy info-panel">
+              <p>
+                I am a creative and detail-oriented designer who enjoys shaping thoughtful brand experiences from concept to final production. My approach combines design thinking, visual communication, and practical knowledge of packaging and presentation.
+              </p>
+              <p>
+                I work across packaging, promotional graphics, creative direction, and digital brand assets, delivering polished visuals that are clean, professional, and aligned with the product story.
+              </p>
+
+              <div class="mini-grid">
+                <div class="mini-item">
+                  <strong>Focus</strong>
+                  <span>Packaging design, identity, print visuals</span>
+                </div>
+                <div class="mini-item">
+                  <strong>Tools</strong>
+                  <span>Adobe Illustrator, Photoshop, PowerPoint</span>
+                </div>
+                <div class="mini-item">
+                  <strong>Background</strong>
+                  <span>Tea technology & value addition</span>
+                </div>
+                <div class="mini-item">
+                  <strong>Location</strong>
+                  <span>Lunugala, Sri Lanka</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Experience</span>
+              <h2>Building creative impact across roles and industries.</h2>
+            </div>
+            <p>
+              My professional experience spans branding support, creative design, training exposure, event communication, and hands-on product-focused operations.
+            </p>
+          </div>
+
+          <div class="timeline">
+            <div class="time-item">
+              <div class="dot" aria-hidden="true"></div>
+              <div class="time-content">
+                <h3>Packaging Designer</h3>
+                <div class="meta">Eswaran Brothers Exports (PVT) LTD · Feb 2025 – Present</div>
+                <p>
+                  Engineering production-ready dieline layouts and high-precision packaging structures, from rigid board sets and folding cartons to clear sleeves and complex geometries, ensuring pre-press standards and premium shelf appeal for commercial and export packaging.
+                </p>
+              </div>
+            </div>
+
+            <div class="time-item">
+              <div class="dot" aria-hidden="true"></div>
+              <div class="time-content">
+                <h3>Editor / Designer</h3>
+                <div class="meta">Leo Club of Colombo Tea Tasters Excellence · 2023 – 2024</div>
+                <p>
+                  Contributed creative design support, visual editing, and branded communication for club initiatives, presentations, and outreach materials.
+                </p>
+              </div>
+            </div>
+
+            <div class="time-item">
+              <div class="dot" aria-hidden="true"></div>
+              <div class="time-content">
+                <h3>Trainee Auditor</h3>
+                <div class="meta">Ceycert (PVT) Ltd · Sept – Dec 2024</div>
+                <p>
+                  Gained exposure to quality assurance processes, documentation, and compliance-oriented systems in a regulated production environment.
+                </p>
+              </div>
+            </div>
+
+            <div class="time-item">
+              <div class="dot" aria-hidden="true"></div>
+              <div class="time-content">
+                <h3>Industrial Training</h3>
+                <div class="meta">Regency Teas (PVT) Ltd · July – Sept 2024</div>
+                <p>
+                  Worked in a tea manufacturing environment to better understand production workflows, packaging requirements, and consumer product expectations.
+                </p>
+              </div>
+            </div>
+
+            <div class="time-item">
+              <div class="dot" aria-hidden="true"></div>
+              <div class="time-content">
+                <h3>Social Media Manager</h3>
+                <div class="meta">Krishna Book Shop, Lunugala · 2020 – 2022</div>
+                <p>
+                  Managed digital communication, content planning, and promotional visuals to strengthen community engagement and brand visibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Skills</span>
+              <h2>Tools, craft, and creative strengths.</h2>
+            </div>
+            <p>
+              I bring together visual design ability, packaging knowledge, and communication skills to create appropriate and effective outcomes for brands and products.
+            </p>
+          </div>
+
+          <div class="skill-grid">
+            <div class="skill-card">
+              <h3>Core Design</h3>
+              <div class="skill-list">
+                <span>Adobe Illustrator</span>
+                <span>Adobe Photoshop</span>
+                <span>Brand Design</span>
+                <span>Packaging Dielines</span>
+                <span>Print Layout</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Product & Marketing</h3>
+              <div class="skill-list">
+                <span>Product Packaging</span>
+                <span>Creative Direction</span>
+                <span>Social Media</span>
+                <span>Visual Communication</span>
+                <span>Promotional Design</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Professional Strengths</h3>
+              <div class="skill-list">
+                <span>Leadership</span>
+                <span>Teamwork</span>
+                <span>Problem Solving</span>
+                <span>Planning</span>
+                <span>Attention to Detail</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section" id="portfolio">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Portfolio</span>
+              <h2>13 Projects · 47 Images</h2>
+            </div>
+            <p>
+              A comprehensive showcase of packaging and visual communication projects exploring product identity, shelf presence, and creative storytelling.
+            </p>
+          </div>
+
+          <div class="portfolio-categories" id="portfolioGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Contact</span>
+              <h2>Let's build a memorable brand presence.</h2>
+            </div>
+            <p>
+              I'm available for packaging design, branding projects, and creative collaborations that need thoughtful and polished visual execution.
+            </p>
+          </div>
+
+          <div class="contact-wrap">
+            <div class="contact-card">
+              <h3>Get in touch</h3>
+              <div class="contact-links">
+                <a href="mailto:075prasath@gmail.com">075prasath@gmail.com</a>
+                <a href="tel:+94773587568">+94 77 358 7568</a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <h3>Availability</h3>
+              <p>
+                Open to freelance projects, packaging design work, and brand creative support for new and growing products.
+              </p>
+              <p>
+                Based in Lunugala, Sri Lanka, with a strong interest in design that balances aesthetics, communication, and commercial value.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        &copy; <span id="year"></span> N. Arulprasath. All rights reserved.
+      </div>
+    </footer>
+
+    <div class="gallery-modal" id="galleryModal">
+      <div class="gallery-modal-content">
+        <div class="gallery-header">
+          <h2 id="galleryTitle">Project Gallery</h2>
+          <button class="gallery-close" onclick="closeGallery()">✕</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </div>
+
+    <div class="image-viewer" id="imageViewer">
+      <button class="image-viewer-close" onclick="closeViewer()">✕</button>
+      <button class="image-viewer-nav prev" onclick="prevImage()">❮</button>
+      <div class="image-viewer-content">
+        <img id="viewerImage" src="" alt="Full size project image" />
+      </div>
+      <button class="image-viewer-nav next" onclick="nextImage()">❯</button>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        navLinks.classList.toggle('open');
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const projects = [
+        {
+          name: "Fresh Picked Pack",
+          type: "Tea Packaging",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20-%20Fresh%20picked%20pack.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20fresh%20picked%20pack_ART_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20fresh%20picked%20pack_ART_4.jpg"
+          ]
+        },
+        {
+          name: "Summer Tea",
+          type: "Tea Packaging",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_0.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_3.jpg"
+          ]
+        },
+        {
+          name: "Advent Calendar",
+          type: "Seasonal Collection",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advant%20calendar-01.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advant%20calendar-02.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_3.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_4.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_5.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_B_0.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_B_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_B_4.jpg"
+          ]
+        },
+        {
+          name: "Coffee Spoken Here",
+          type: "Premium Coffee",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%201.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%203.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%204%20(1).jpg"
+          ]
+        },
+        {
+          name: "Christmas Tea Collection",
+          type: "Tea Packaging",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_3.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_4.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_5.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_6.jpg"
+          ]
+        },
+        {
+          name: "The Lemonade Stand",
+          type: "Premium Beverage",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_0.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_1.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_2.JPG"
+          ]
+        },
+        {
+          name: "The Taste of Summer",
+          type: "Seasonal Edition",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_1.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_3.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_5.JPG"
+          ]
+        },
+        {
+          name: "Cool Cup Cold Brew",
+          type: "Premium Coffee",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_0.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_2.jpg"
+          ]
+        },
+        {
+          name: "Curved Roof Box",
+          type: "Tea Packaging",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_3.jpg"
+          ]
+        },
+        {
+          name: "Soursop Tea",
+          type: "Tea Packaging",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/set%20of%2060%20Top%20bow%20box_V3_envelopes_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/set%20of%2060%20Top%20bow%20box_V3_envelopes_2.jpg"
+          ]
+        },
+        {
+          name: "EB Tea Master",
+          type: "Premium Tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_SET%20OF%204%20FLAT%20BOX%20WITH%20MIDDLE%20BADGE%20%26%20CUTOUT%20WINDOW_CP_DESIGN%201%20ART%20WORK_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_SET%20OF%204%20FLAT%20BOX%20WITH%20MIDDLE%20BADGE%20%26%20CUTOUT%20WINDOW_CP_DESIGN%201%20ART%20WORK_2.jpg"
+          ]
+        },
+        {
+          name: "Tea For All",
+          type: "Tea Packaging",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_3.jpg"
+          ]
+        },
+        {
+          name: "Lantern Pack",
+          type: "Premium Tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_3.jpg"
+          ]
+        }
+      ];
+
+      let currentViewerImages = [];
+      let currentViewerIndex = 0;
+
+      function renderPortfolio() {
+        const grid = document.getElementById('portfolioGrid');
+        grid.innerHTML = '';
+
+        projects.forEach((project) => {
+          const card = document.createElement('div');
+          card.className = 'category-card';
+          card.innerHTML = `
+            <div class="category-preview">
+              <img src="${project.images[0]}" alt="${project.name}" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <h3>${project.name}</h3>
+              <div class="category-meta">
+                <span class="image-badge">${project.images.length} images</span>
+                <span class="category-type">${project.type}</span>
+              </div>
+              <button class="view-project-btn" onclick="openGallery('${project.name}')">View Gallery</button>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      function openGallery(projectName) {
+        const project = projects.find(p => p.name === projectName);
+        if (!project) return;
+
+        document.getElementById('galleryTitle').textContent = project.name;
+        const galleryGrid = document.getElementById('galleryGrid');
+        galleryGrid.innerHTML = '';
+
+        project.images.forEach((img, idx) => {
+          const item = document.createElement('div');
+          item.className = 'gallery-item';
+          item.innerHTML = `<img src="${img}" alt="Image ${idx + 1}" onclick="openViewer('${projectName}', ${idx})" loading="lazy" />`;
+          galleryGrid.appendChild(item);
+        });
+
+        document.getElementById('galleryModal').classList.add('active');
+      }
+
+      function closeGallery() {
+        document.getElementById('galleryModal').classList.remove('active');
+      }
+
+      function openViewer(projectName, imageIndex) {
+        const project = projects.find(p => p.name === projectName);
+        if (!project) return;
+
+        currentViewerImages = project.images;
+        currentViewerIndex = imageIndex;
+        document.getElementById('viewerImage').src = currentViewerImages[currentViewerIndex];
+        document.getElementById('imageViewer').classList.add('active');
+      }
+
+      function closeViewer() {
+        document.getElementById('imageViewer').classList.remove('active');
+      }
+
+      function prevImage() {
+        currentViewerIndex = (currentViewerIndex - 1 + currentViewerImages.length) % currentViewerImages.length;
+        document.getElementById('viewerImage').src = currentViewerImages[currentViewerIndex];
+      }
+
+      function nextImage() {
+        currentViewerIndex = (currentViewerIndex + 1) % currentViewerImages.length;
+        document.getElementById('viewerImage').src = currentViewerImages[currentViewerIndex];
+      }
+
+      document.addEventListener('keydown', (e) => {
+        const viewer = document.getElementById('imageViewer');
+        if (!viewer.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'Escape') closeViewer();
+      });
+
+      document.getElementById('imageViewer').addEventListener('click', (e) => {
+        if (e.target.id === 'imageViewer') closeViewer();
+      });
+
+      renderPortfolio();
+    </script>
+  </body>
+</html>
