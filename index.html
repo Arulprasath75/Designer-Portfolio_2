@@ -7,7 +7,7 @@
       name="description"
       content="N. Arulprasath is a packaging and graphic designer focused on modern, premium brand experiences and creative product design."
     />
-    <title>N. Arulprasath | Portfolio</title>
+    <title>N. Arulprasath | Packaging Design Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,10 +28,11 @@
         --text: #1c2323;
         --muted: #55615f;
         --shadow: 0 25px 55px rgba(32, 40, 38, 0.12);
+        --shadow-lg: 0 40px 80px rgba(32, 40, 38, 0.18);
         --radius-lg: 28px;
         --radius-md: 20px;
         --radius-sm: 12px;
-        --container: 1200px;
+        --container: 1280px;
       }
 
       * {
@@ -50,6 +51,7 @@
           linear-gradient(180deg, #f9f5f1 0%, #f2ede7 100%);
         color: var(--text);
         line-height: 1.7;
+        min-height: 100vh;
       }
 
       img {
@@ -245,7 +247,7 @@
       .stats strong {
         display: block;
         font-size: clamp(1.5rem, 2vw, 2rem);
-        color: var(--primary)
+        color: var(--primary);
       }
 
       .stats span {
@@ -530,7 +532,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-bottom: 26px;
+        margin-bottom: 32px;
       }
 
       .filter-btn {
@@ -554,51 +556,185 @@
 
       .project-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 26px;
       }
 
-      .project-card {
+      .project-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-showcase {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
         overflow: hidden;
+        box-shadow: 0 16px 32px rgba(24, 30, 27, 0.06);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
 
-      .project-card:hover {
+      .project-item:hover .project-showcase {
         transform: translateY(-4px);
-        box-shadow: 0 22px 38px rgba(26, 30, 30, 0.1);
+        box-shadow: var(--shadow);
       }
 
-      .project-card img {
-        width: 100%;
-        height: 260px;
-        object-fit: cover;
+      .project-header {
+        padding: 20px 18px;
+        border-bottom: 1px solid var(--line);
       }
 
-      .project-body {
-        padding: 20px 18px 18px;
+      .project-header h3 {
+        font-size: 1.25rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 8px;
       }
 
       .project-tag {
         display: inline-flex;
-        margin-bottom: 10px;
-        padding: 7px 10px;
+        padding: 6px 10px;
         border-radius: 999px;
         background: rgba(184, 141, 88, 0.12);
         color: var(--accent);
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         letter-spacing: 0.12em;
         text-transform: uppercase;
         font-weight: 800;
       }
 
-      .project-card h3 {
-        font-size: 1.35rem;
-        letter-spacing: -0.04em;
+      .project-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 8px;
+        background: #fafaf8;
+        min-height: 280px;
       }
 
-      .project-card p {
-        margin: 12px 0 0;
+      .project-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      .project-gallery img:hover {
+        transform: scale(1.02);
+      }
+
+      .project-gallery .main {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .project-gallery.single-image {
+        grid-template-columns: 1fr;
+      }
+
+      .project-gallery.single-image img {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .project-gallery.two-column {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .image-count {
+        padding: 12px 18px;
+        border-top: 1px solid var(--line);
+        background: rgba(29, 60, 52, 0.03);
+        font-size: 0.85rem;
         color: var(--muted);
+        font-weight: 600;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.92);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .modal-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        max-width: 90vw;
+        max-height: 90vh;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+      }
+
+      .modal-nav:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .modal-nav.prev {
+        left: 20px;
+      }
+
+      .modal-nav.next {
+        right: 20px;
       }
 
       .contact-wrap {
@@ -653,8 +789,7 @@
         .hero-inner,
         .about-grid,
         .contact-wrap,
-        .skill-grid,
-        .project-grid {
+        .skill-grid {
           grid-template-columns: 1fr;
         }
 
@@ -686,6 +821,10 @@
         .nav-links.open {
           display: flex;
         }
+
+        .project-grid {
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
       }
 
       @media (max-width: 640px) {
@@ -704,6 +843,28 @@
 
         .btn {
           width: 100%;
+        }
+
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-gallery {
+          min-height: 240px;
+        }
+
+        .modal-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 18px;
+        }
+
+        .modal-nav.prev {
+          left: 10px;
+        }
+
+        .modal-nav.next {
+          right: 10px;
         }
       }
     </style>
@@ -740,16 +901,16 @@
 
             <ul class="stats" aria-label="Highlights">
               <li>
-                <strong>4+</strong>
-                <span>Years of design work</span>
+                <strong>13+</strong>
+                <span>Projects</span>
               </li>
               <li>
-                <strong>15+</strong>
-                <span>Packaging projects</span>
+                <strong>47</strong>
+                <span>Image Assets</span>
               </li>
               <li>
                 <strong>100%</strong>
-                <span>Creative focus</span>
+                <span>Creative Focus</span>
               </li>
             </ul>
           </div>
@@ -936,74 +1097,22 @@
           <div class="section-head">
             <div>
               <span class="section-kicker">Portfolio</span>
-              <h2>Selected design work.</h2>
+              <h2>13 Projects · 47 Images</h2>
             </div>
             <p>
-              A selection of packaging and visual communication projects exploring product identity, shelf presence, and storytelling.
+              A comprehensive showcase of packaging and visual communication projects exploring product identity, shelf presence, and creative storytelling.
             </p>
           </div>
 
           <div class="filter-bar" aria-label="Project filters">
-            <button class="filter-btn active" type="button" data-filter="all">All</button>
-            <button class="filter-btn" type="button" data-filter="packaging">Packaging</button>
-            <button class="filter-btn" type="button" data-filter="brand">Brand</button>
-            <button class="filter-btn" type="button" data-filter="creative">Creative</button>
+            <button class="filter-btn active" type="button" data-filter="all">All Projects</button>
+            <button class="filter-btn" type="button" data-filter="tea">Tea Packaging</button>
+            <button class="filter-btn" type="button" data-filter="premium">Premium</button>
+            <button class="filter-btn" type="button" data-filter="seasonal">Seasonal</button>
           </div>
 
-          <div class="project-grid">
-            <article class="project-card" data-category="packaging">
-              <img src="https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_0.jpg" alt="40 CT Double Layered Box" />
-              <div class="project-body">
-                <span class="project-tag">Packaging</span>
-                <h3>Double Layered Tea Box</h3>
-                <p>Premium tea packaging with elegant structure, layered depth, and modern shelf appeal.</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="creative">
-              <img src="https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_1.JPG" alt="The Lemonade Stand packaging concept" />
-              <div class="project-body">
-                <span class="project-tag">Creative</span>
-                <h3>The Lemonade Stand</h3>
-                <p>Colorful, youthful branding concept with strong visual identity and playful product storytelling.</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="packaging">
-              <img src="https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_1.jpg" alt="Cold brew packaging" />
-              <div class="project-body">
-                <span class="project-tag">Packaging</span>
-                <h3>Cold Brew Identity</h3>
-                <p>Fresh visual language designed for premium cold brew presentation and category recognition.</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="brand">
-              <img src="https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_1.jpg" alt="Pyramid bag box artwork" />
-              <div class="project-body">
-                <span class="project-tag">Brand</span>
-                <h3>Pyramid Bag Packaging</h3>
-                <p>Premium retail packaging built around presentation, product clarity, and aesthetic value.</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="creative">
-              <img src="https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_2.jpg" alt="Advent calendar packaging" />
-              <div class="project-body">
-                <span class="project-tag">Creative</span>
-                <h3>Advent Calendar</h3>
-                <p>Seasonal product design combining storytelling, visual rhythm, and festive brand appeal.</p>
-              </div>
-            </article>
-
-            <article class="project-card" data-category="packaging">
-              <img src="https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_1.jpg" alt="Harrods pyramid pack" />
-              <div class="project-body">
-                <span class="project-tag">Packaging</span>
-                <h3>Harrods Pyramid Pack</h3>
-                <p>Luxury-inspired packaging concept focused on premium structure and elevated shelf presence.</p>
-              </div>
-            </article>
+          <div class="project-grid" id="projectGrid">
+            <!-- Projects will be inserted here by JavaScript -->
           </div>
         </div>
       </section>
@@ -1013,10 +1122,10 @@
           <div class="section-head">
             <div>
               <span class="section-kicker">Contact</span>
-              <h2>Let’s build a memorable brand presence.</h2>
+              <h2>Let's build a memorable brand presence.</h2>
             </div>
             <p>
-              I’m available for packaging design, branding projects, and creative collaborations that need thoughtful and polished visual execution.
+              I'm available for packaging design, branding projects, and creative collaborations that need thoughtful and polished visual execution.
             </p>
           </div>
 
@@ -1050,6 +1159,16 @@
       </div>
     </footer>
 
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close" onclick="closeModal()">✕</button>
+        <button class="modal-nav prev" aria-label="Previous image" onclick="prevImage()">❮</button>
+        <img class="modal-image" id="modalImage" src="" alt="Full size project image" />
+        <button class="modal-nav next" aria-label="Next image" onclick="nextImage()">❯</button>
+      </div>
+    </div>
+
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1069,20 +1188,233 @@
         });
       });
 
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const projectCards = document.querySelectorAll('.project-card');
+      // Project Data with Images
+      const projects = [
+        {
+          id: 1,
+          name: "Fresh Picked Pack",
+          category: "tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20-%20Fresh%20picked%20pack.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20fresh%20picked%20pack_ART_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20fresh%20picked%20pack_ART_4.jpg"
+          ]
+        },
+        {
+          id: 2,
+          name: "Summer Tea",
+          category: "tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_0.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_3.jpg"
+          ]
+        },
+        {
+          id: 3,
+          name: "Advent Calendar",
+          category: "seasonal",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advant%20calendar-01.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advant%20calendar-02.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_3.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_4.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_Art_5.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_B_0.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_B_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advent_Calendar_B_4.jpg"
+          ]
+        },
+        {
+          id: 4,
+          name: "Coffee Spoken Here",
+          category: "premium",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%201.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%203.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%204%20(1).jpg"
+          ]
+        },
+        {
+          id: 5,
+          name: "Christmas Tea Collection",
+          category: "tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_3.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_4.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_5.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_6.jpg"
+          ]
+        },
+        {
+          id: 6,
+          name: "The Lemonade Stand",
+          category: "premium",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_0.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_1.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_2.JPG"
+          ]
+        },
+        {
+          id: 7,
+          name: "The Taste of Summer",
+          category: "seasonal",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_1.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_3.JPG",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_5.JPG"
+          ]
+        },
+        {
+          id: 8,
+          name: "Cool Cup Cold Brew",
+          category: "premium",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_0.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_2.jpg"
+          ]
+        },
+        {
+          id: 9,
+          name: "Curved Roof Box",
+          category: "tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_3.jpg"
+          ]
+        },
+        {
+          id: 10,
+          name: "Soursop Tea",
+          category: "tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/set%20of%2060%20Top%20bow%20box_V3_envelopes_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/set%20of%2060%20Top%20bow%20box_V3_envelopes_2.jpg"
+          ]
+        },
+        {
+          id: 11,
+          name: "EB Tea Master",
+          category: "premium",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_SET%20OF%204%20FLAT%20BOX%20WITH%20MIDDLE%20BADGE%20%26%20CUTOUT%20WINDOW_CP_DESIGN%201%20ART%20WORK_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_SET%20OF%204%20FLAT%20BOX%20WITH%20MIDDLE%20BADGE%20%26%20CUTOUT%20WINDOW_CP_DESIGN%201%20ART%20WORK_2.jpg"
+          ]
+        },
+        {
+          id: 12,
+          name: "Tea For All",
+          category: "tea",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_3.jpg"
+          ]
+        },
+        {
+          id: 13,
+          name: "Lantern Pack",
+          category: "premium",
+          images: [
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_1.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_2.jpg",
+            "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_3.jpg"
+          ]
+        }
+      ];
 
-      filterButtons.forEach((button) => {
+      let allImages = [];
+      let currentImageIndex = 0;
+
+      function renderProjects(filter = 'all') {
+        const grid = document.getElementById('projectGrid');
+        grid.innerHTML = '';
+        allImages = [];
+
+        projects.forEach((project) => {
+          if (filter !== 'all' && project.category !== filter) return;
+
+          const projectHTML = `
+            <div class="project-item">
+              <div class="project-showcase">
+                <div class="project-header">
+                  <h3>${project.name}</h3>
+                  <span class="project-tag">${project.category.toUpperCase()}</span>
+                </div>
+                <div class="project-gallery ${project.images.length === 1 ? 'single-image' : project.images.length === 2 ? 'two-column' : ''}">
+                  ${project.images.map((img, idx) => `
+                    <img 
+                      src="${img}" 
+                      alt="${project.name} - Image ${idx + 1}"
+                      onclick="openModal(${allImages.length + idx})"
+                      ${idx === 0 && project.images.length > 2 ? 'class="main"' : ''}
+                      loading="lazy"
+                    />
+                  `).join('')}
+                </div>
+                <div class="image-count">${project.images.length} image${project.images.length > 1 ? 's' : ''}</div>
+              </div>
+            </div>
+          `;
+
+          grid.innerHTML += projectHTML;
+          allImages.push(...project.images);
+        });
+      }
+
+      function openModal(index) {
+        currentImageIndex = index;
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = allImages[index];
+        modal.classList.add('active');
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+      }
+
+      function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+        document.getElementById('modalImage').src = allImages[currentImageIndex];
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % allImages.length;
+        document.getElementById('modalImage').src = allImages[currentImageIndex];
+      }
+
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('imageModal');
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'Escape') closeModal();
+      });
+
+      document.getElementById('imageModal').addEventListener('click', (e) => {
+        if (e.target.id === 'imageModal') closeModal();
+      });
+
+      // Filter functionality
+      document.querySelectorAll('.filter-btn').forEach((button) => {
         button.addEventListener('click', () => {
-          filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
-          const selected = button.dataset.filter;
-
-          projectCards.forEach((card) => {
-            const match = selected === 'all' || card.dataset.category === selected;
-            card.style.display = match ? 'block' : 'none';
-          });
+          document.querySelectorAll('.filter-btn').forEach((btn) => btn.classList.remove('active'));
+          button.classList.add('active');
+          renderProjects(button.dataset.filter);
         });
       });
+
+      // Initial render
+      renderProjects();
     </script>
   </body>
 </html>
