@@ -528,44 +528,18 @@
         font-weight: 700;
       }
 
-      .filter-bar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 32px;
+      .portfolio-section {
+        padding: 80px 0;
       }
 
-      .filter-btn {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.4);
-        color: var(--muted);
-        border-radius: 999px;
-        padding: 10px 16px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-
-      .filter-btn.active,
-      .filter-btn:hover,
-      .filter-btn:focus-visible {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-      }
-
-      .project-grid {
+      .portfolio-categories {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 26px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+        margin-top: 40px;
       }
 
-      .project-item {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .project-showcase {
+      .category-card {
         background: rgba(255, 255, 255, 0.5);
         border: 1px solid var(--line);
         border-radius: var(--radius-lg);
@@ -574,84 +548,79 @@
         transition: transform 0.25s ease, box-shadow 0.25s ease;
       }
 
-      .project-item:hover .project-showcase {
+      .category-card:hover {
         transform: translateY(-4px);
         box-shadow: var(--shadow);
       }
 
-      .project-header {
-        padding: 20px 18px;
-        border-bottom: 1px solid var(--line);
+      .category-preview {
+        width: 100%;
+        height: 240px;
+        background: #ddd;
+        overflow: hidden;
       }
 
-      .project-header h3 {
-        font-size: 1.25rem;
+      .category-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .category-info {
+        padding: 24px 20px;
+      }
+
+      .category-info h3 {
+        font-size: 1.3rem;
         letter-spacing: -0.03em;
         margin-bottom: 8px;
       }
 
-      .project-tag {
+      .category-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .image-badge {
         display: inline-flex;
-        padding: 6px 10px;
+        padding: 6px 12px;
         border-radius: 999px;
         background: rgba(184, 141, 88, 0.12);
         color: var(--accent);
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         font-weight: 800;
       }
 
-      .project-gallery {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 8px;
-        background: #fafaf8;
-        min-height: 280px;
-      }
-
-      .project-gallery img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: transform 0.2s ease;
-      }
-
-      .project-gallery img:hover {
-        transform: scale(1.02);
-      }
-
-      .project-gallery .main {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
-
-      .project-gallery.single-image {
-        grid-template-columns: 1fr;
-      }
-
-      .project-gallery.single-image img {
-        grid-column: span 1;
-        grid-row: span 1;
-      }
-
-      .project-gallery.two-column {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .image-count {
-        padding: 12px 18px;
-        border-top: 1px solid var(--line);
-        background: rgba(29, 60, 52, 0.03);
-        font-size: 0.85rem;
+      .category-type {
         color: var(--muted);
+        font-size: 0.9rem;
         font-weight: 600;
       }
 
-      .modal {
+      .view-project-btn {
+        width: 100%;
+        padding: 12px 16px;
+        background: rgba(29, 60, 52, 0.08);
+        border: 1px solid rgba(29, 60, 52, 0.12);
+        border-radius: var(--radius-md);
+        color: var(--primary);
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .view-project-btn:hover,
+      .view-project-btn:focus-visible {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .gallery-modal {
         display: none;
         position: fixed;
         top: 0;
@@ -660,32 +629,110 @@
         bottom: 0;
         background: rgba(0, 0, 0, 0.92);
         z-index: 2000;
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .gallery-modal.active {
+        display: block;
+      }
+
+      .gallery-modal-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+      }
+
+      .gallery-header {
+        padding: 28px 32px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .gallery-header h2 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .gallery-close {
+        background: none;
+        border: none;
+        font-size: 32px;
+        cursor: pointer;
+        color: var(--text);
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.2s;
+      }
+
+      .gallery-close:hover {
+        color: var(--primary);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        padding: 32px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        aspect-ratio: 1;
+        cursor: pointer;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.2s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .image-viewer {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2001;
         justify-content: center;
         align-items: center;
         padding: 20px;
       }
 
-      .modal.active {
+      .image-viewer.active {
         display: flex;
       }
 
-      .modal-content {
+      .image-viewer-content {
         position: relative;
         max-width: 90vw;
         max-height: 90vh;
-        border-radius: 16px;
-        overflow: hidden;
       }
 
-      .modal-image {
+      .image-viewer img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        max-width: 90vw;
-        max-height: 90vh;
       }
 
-      .modal-close {
+      .image-viewer-close {
         position: absolute;
         top: 20px;
         right: 20px;
@@ -703,11 +750,11 @@
         transition: background 0.2s;
       }
 
-      .modal-close:hover {
+      .image-viewer-close:hover {
         background: rgba(255, 255, 255, 0.3);
       }
 
-      .modal-nav {
+      .image-viewer-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -725,15 +772,15 @@
         transition: background 0.2s;
       }
 
-      .modal-nav:hover {
+      .image-viewer-nav:hover {
         background: rgba(255, 255, 255, 0.3);
       }
 
-      .modal-nav.prev {
+      .image-viewer-nav.prev {
         left: 20px;
       }
 
-      .modal-nav.next {
+      .image-viewer-nav.next {
         right: 20px;
       }
 
@@ -822,8 +869,8 @@
           display: flex;
         }
 
-        .project-grid {
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        .portfolio-categories {
+          grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         }
       }
 
@@ -845,26 +892,20 @@
           width: 100%;
         }
 
-        .project-grid {
+        .portfolio-categories {
           grid-template-columns: 1fr;
         }
 
-        .project-gallery {
-          min-height: 240px;
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         }
 
-        .modal-nav {
-          width: 40px;
-          height: 40px;
-          font-size: 18px;
+        .gallery-header {
+          padding: 20px;
         }
 
-        .modal-nav.prev {
-          left: 10px;
-        }
-
-        .modal-nav.next {
-          right: 10px;
+        .gallery-header h2 {
+          font-size: 1.5rem;
         }
       }
     </style>
@@ -901,7 +942,7 @@
 
             <ul class="stats" aria-label="Highlights">
               <li>
-                <strong>13+</strong>
+                <strong>13</strong>
                 <span>Projects</span>
               </li>
               <li>
@@ -919,7 +960,7 @@
             <div class="portrait-wrap">
               <div class="portrait">
                 <img
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwwUAxUTAwwSBxUXBxcUBxcUFhYeExoUGhsaHB0eHhsdHyImHB0fHxoXIiIiIiIiAkICAggICAwVDAwwShEODw0SEA8SEBEOEhEPEBESEhEPExERDxAREBATEBATEBEQEBAREB8QEB8QEB8QEREA/8AALCAABMAJAQEABAD/xAAZAQEBAQEBAAAAAAAAAAAAAAAAAQIDBAf/2gAIAQEAAD8A/wD//9k="
                   alt="Portrait of N. Arulprasath"
                 />
               </div>
@@ -1092,7 +1133,7 @@
         </div>
       </section>
 
-      <section class="section" id="portfolio">
+      <section class="portfolio-section" id="portfolio">
         <div class="container">
           <div class="section-head">
             <div>
@@ -1104,15 +1145,8 @@
             </p>
           </div>
 
-          <div class="filter-bar" aria-label="Project filters">
-            <button class="filter-btn active" type="button" data-filter="all">All Projects</button>
-            <button class="filter-btn" type="button" data-filter="tea">Tea Packaging</button>
-            <button class="filter-btn" type="button" data-filter="premium">Premium</button>
-            <button class="filter-btn" type="button" data-filter="seasonal">Seasonal</button>
-          </div>
-
-          <div class="project-grid" id="projectGrid">
-            <!-- Projects will be inserted here by JavaScript -->
+          <div class="portfolio-categories" id="portfolioGrid">
+            <!-- Categories will be inserted here by JavaScript -->
           </div>
         </div>
       </section>
@@ -1159,14 +1193,27 @@
       </div>
     </footer>
 
-    <!-- Image Modal -->
-    <div class="modal" id="imageModal">
-      <div class="modal-content">
-        <button class="modal-close" aria-label="Close" onclick="closeModal()">✕</button>
-        <button class="modal-nav prev" aria-label="Previous image" onclick="prevImage()">❮</button>
-        <img class="modal-image" id="modalImage" src="" alt="Full size project image" />
-        <button class="modal-nav next" aria-label="Next image" onclick="nextImage()">❯</button>
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+      <div class="gallery-modal-content">
+        <div class="gallery-header">
+          <h2 id="galleryTitle">Project Gallery</h2>
+          <button class="gallery-close" onclick="closeGallery()">✕</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery images will be inserted here -->
+        </div>
       </div>
+    </div>
+
+    <!-- Image Viewer -->
+    <div class="image-viewer" id="imageViewer">
+      <button class="image-viewer-close" onclick="closeViewer()">✕</button>
+      <button class="image-viewer-nav prev" onclick="prevImage()">❮</button>
+      <div class="image-viewer-content">
+        <img id="viewerImage" src="" alt="Full size project image" />
+      </div>
+      <button class="image-viewer-nav next" onclick="nextImage()">❯</button>
     </div>
 
     <script>
@@ -1188,12 +1235,11 @@
         });
       });
 
-      // Project Data with Images
+      // Project Data
       const projects = [
         {
-          id: 1,
           name: "Fresh Picked Pack",
-          category: "tea",
+          type: "Tea Packaging",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20-%20Fresh%20picked%20pack.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/30CT%20fresh%20picked%20pack_ART_1.jpg",
@@ -1201,9 +1247,8 @@
           ]
         },
         {
-          id: 2,
           name: "Summer Tea",
-          category: "tea",
+          type: "Tea Packaging",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_0.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/40%20CT%20Double%20layered%20box_1.jpg",
@@ -1211,9 +1256,8 @@
           ]
         },
         {
-          id: 3,
           name: "Advent Calendar",
-          category: "seasonal",
+          type: "Seasonal Collection",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advant%20calendar-01.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Advant%20calendar-02.jpg",
@@ -1228,9 +1272,8 @@
           ]
         },
         {
-          id: 4,
           name: "Coffee Spoken Here",
-          category: "premium",
+          type: "Premium Coffee",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%201.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Coffee%20spoken%20here%203.jpg",
@@ -1238,9 +1281,8 @@
           ]
         },
         {
-          id: 5,
           name: "Christmas Tea Collection",
-          category: "tea",
+          type: "Tea Packaging",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_1.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/Harodds_pyramid_pack_2.jpg",
@@ -1251,9 +1293,8 @@
           ]
         },
         {
-          id: 6,
           name: "The Lemonade Stand",
-          category: "premium",
+          type: "Premium Beverage",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_0.JPG",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20lemonade%20stand_1_art_1.JPG",
@@ -1261,9 +1302,8 @@
           ]
         },
         {
-          id: 7,
           name: "The Taste of Summer",
-          category: "seasonal",
+          type: "Seasonal Edition",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_1.JPG",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/The%20taste%20of%20summer_ART_3.JPG",
@@ -1271,9 +1311,8 @@
           ]
         },
         {
-          id: 8,
           name: "Cool Cup Cold Brew",
-          category: "premium",
+          type: "Premium Coffee",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_0.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/cool%20cup%20cold%20brew_Art_1.jpg",
@@ -1281,9 +1320,8 @@
           ]
         },
         {
-          id: 9,
           name: "Curved Roof Box",
-          category: "tea",
+          type: "Tea Packaging",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_1.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/curved%20roof%20box_2.jpg",
@@ -1291,27 +1329,24 @@
           ]
         },
         {
-          id: 10,
           name: "Soursop Tea",
-          category: "tea",
+          type: "Tea Packaging",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/set%20of%2060%20Top%20bow%20box_V3_envelopes_1.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/set%20of%2060%20Top%20bow%20box_V3_envelopes_2.jpg"
           ]
         },
         {
-          id: 11,
           name: "EB Tea Master",
-          category: "premium",
+          type: "Premium Tea",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_SET%20OF%204%20FLAT%20BOX%20WITH%20MIDDLE%20BADGE%20%26%20CUTOUT%20WINDOW_CP_DESIGN%201%20ART%20WORK_1.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_SET%20OF%204%20FLAT%20BOX%20WITH%20MIDDLE%20BADGE%20%26%20CUTOUT%20WINDOW_CP_DESIGN%201%20ART%20WORK_2.jpg"
           ]
         },
         {
-          id: 12,
           name: "Tea For All",
-          category: "tea",
+          type: "Tea Packaging",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_1.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PPEB_Tea%204%20All_2.jpg",
@@ -1319,9 +1354,8 @@
           ]
         },
         {
-          id: 13,
           name: "Lantern Pack",
-          category: "premium",
+          type: "Premium Tea",
           images: [
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_1.jpg",
             "https://raw.githubusercontent.com/Arulprasath75/Designer-Portfolio_2/main/PYRAMID%20BAGS%20LANTERN%20STYLE%20BOX_ARTWORK_2.jpg",
@@ -1330,91 +1364,93 @@
         }
       ];
 
-      let allImages = [];
-      let currentImageIndex = 0;
+      let currentViewerImages = [];
+      let currentViewerIndex = 0;
 
-      function renderProjects(filter = 'all') {
-        const grid = document.getElementById('projectGrid');
+      function renderPortfolio() {
+        const grid = document.getElementById('portfolioGrid');
         grid.innerHTML = '';
-        allImages = [];
 
         projects.forEach((project) => {
-          if (filter !== 'all' && project.category !== filter) return;
-
-          const projectHTML = `
-            <div class="project-item">
-              <div class="project-showcase">
-                <div class="project-header">
-                  <h3>${project.name}</h3>
-                  <span class="project-tag">${project.category.toUpperCase()}</span>
-                </div>
-                <div class="project-gallery ${project.images.length === 1 ? 'single-image' : project.images.length === 2 ? 'two-column' : ''}">
-                  ${project.images.map((img, idx) => `
-                    <img 
-                      src="${img}" 
-                      alt="${project.name} - Image ${idx + 1}"
-                      onclick="openModal(${allImages.length + idx})"
-                      ${idx === 0 && project.images.length > 2 ? 'class="main"' : ''}
-                      loading="lazy"
-                    />
-                  `).join('')}
-                </div>
-                <div class="image-count">${project.images.length} image${project.images.length > 1 ? 's' : ''}</div>
+          const card = document.createElement('div');
+          card.className = 'category-card';
+          card.innerHTML = `
+            <div class="category-preview">
+              <img src="${project.images[0]}" alt="${project.name}" loading="lazy" />
+            </div>
+            <div class="category-info">
+              <h3>${project.name}</h3>
+              <div class="category-meta">
+                <span class="image-badge">${project.images.length} images</span>
+                <span class="category-type">${project.type}</span>
               </div>
+              <button class="view-project-btn" onclick="openGallery('${project.name}')">View Gallery</button>
             </div>
           `;
-
-          grid.innerHTML += projectHTML;
-          allImages.push(...project.images);
+          grid.appendChild(card);
         });
       }
 
-      function openModal(index) {
-        currentImageIndex = index;
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        modalImage.src = allImages[index];
-        modal.classList.add('active');
+      function openGallery(projectName) {
+        const project = projects.find(p => p.name === projectName);
+        if (!project) return;
+
+        document.getElementById('galleryTitle').textContent = project.name;
+        const galleryGrid = document.getElementById('galleryGrid');
+        galleryGrid.innerHTML = '';
+
+        project.images.forEach((img, idx) => {
+          const item = document.createElement('div');
+          item.className = 'gallery-item';
+          item.innerHTML = `<img src="${img}" alt="Image ${idx + 1}" onclick="openViewer('${projectName}', ${idx})" loading="lazy" />`;
+          galleryGrid.appendChild(item);
+        });
+
+        document.getElementById('galleryModal').classList.add('active');
       }
 
-      function closeModal() {
-        const modal = document.getElementById('imageModal');
-        modal.classList.remove('active');
+      function closeGallery() {
+        document.getElementById('galleryModal').classList.remove('active');
+      }
+
+      function openViewer(projectName, imageIndex) {
+        const project = projects.find(p => p.name === projectName);
+        if (!project) return;
+
+        currentViewerImages = project.images;
+        currentViewerIndex = imageIndex;
+        document.getElementById('viewerImage').src = currentViewerImages[currentViewerIndex];
+        document.getElementById('imageViewer').classList.add('active');
+      }
+
+      function closeViewer() {
+        document.getElementById('imageViewer').classList.remove('active');
       }
 
       function prevImage() {
-        currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
-        document.getElementById('modalImage').src = allImages[currentImageIndex];
+        currentViewerIndex = (currentViewerIndex - 1 + currentViewerImages.length) % currentViewerImages.length;
+        document.getElementById('viewerImage').src = currentViewerImages[currentViewerIndex];
       }
 
       function nextImage() {
-        currentImageIndex = (currentImageIndex + 1) % allImages.length;
-        document.getElementById('modalImage').src = allImages[currentImageIndex];
+        currentViewerIndex = (currentViewerIndex + 1) % currentViewerImages.length;
+        document.getElementById('viewerImage').src = currentViewerImages[currentViewerIndex];
       }
 
       document.addEventListener('keydown', (e) => {
-        const modal = document.getElementById('imageModal');
-        if (!modal.classList.contains('active')) return;
+        const viewer = document.getElementById('imageViewer');
+        if (!viewer.classList.contains('active')) return;
         if (e.key === 'ArrowLeft') prevImage();
         if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') closeViewer();
       });
 
-      document.getElementById('imageModal').addEventListener('click', (e) => {
-        if (e.target.id === 'imageModal') closeModal();
-      });
-
-      // Filter functionality
-      document.querySelectorAll('.filter-btn').forEach((button) => {
-        button.addEventListener('click', () => {
-          document.querySelectorAll('.filter-btn').forEach((btn) => btn.classList.remove('active'));
-          button.classList.add('active');
-          renderProjects(button.dataset.filter);
-        });
+      document.getElementById('imageViewer').addEventListener('click', (e) => {
+        if (e.target.id === 'imageViewer') closeViewer();
       });
 
       // Initial render
-      renderProjects();
+      renderPortfolio();
     </script>
   </body>
 </html>
